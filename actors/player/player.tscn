@@ -1,31 +1,85 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxhmbcu2y6onb"]
+[gd_scene load_steps=7 format=3 uid="uid://cxhmbcu2y6onb"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_hxo5q"]
 [ext_resource type="PackedScene" uid="uid://cpjjhmw4gdy70" path="res://actors/projectile/projectile.tscn" id="2_d25ch"]
+[ext_resource type="Texture2D" uid="uid://cygntj2adyqhj" path="res://Assets/Robot_shooting_single.png" id="3_t5uop"]
+[ext_resource type="Texture2D" uid="uid://bpeq40juk13o2" path="res://Assets/laser_gun.png" id="4_7o66n"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_gge8m"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_nr3vr"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_4khxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wg87"]
-size = Vector2(50, 50)
+size = Vector2(50, 66)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_hxo5q")
 projectile_scene = ExtResource("2_d25ch")
 
-[node name="MainSprite" type="Sprite2D" parent="."]
-scale = Vector2(50, 50)
-texture = SubResource("CanvasTexture_gge8m")
+[node name="fix_arm" type="Node" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="MainSprite"]
-position = Vector2(0.64, 0)
+[node name="Sprite2D3" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(16.8, -13.6)
+scale = Vector2(7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.4, 0.392157, 0.4, 1)
+position = Vector2(16.6606, -12.6563)
+scale = Vector2(7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(22.754, -13)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(22.754, -14)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D8" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(261.817, -151.319)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="fix_arm"]
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(17.15, -14.556)
+scale = Vector2(7.7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Robot" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_t5uop")
+
+[node name="hand" type="Sprite2D" parent="Robot"]
+modulate = Color(0.4, 0.392157, 0.4, 1)
+position = Vector2(217.856, -135)
+scale = Vector2(40, 37)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Finger_top" type="Sprite2D" parent="Robot"]
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(237.5, -140)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Finger_bottom" type="Sprite2D" parent="Robot"]
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(237.5, -130)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Gun" type="Sprite2D" parent="Robot"]
+position = Vector2(250, -155)
 scale = Vector2(0.2, 0.2)
-texture = SubResource("CanvasTexture_nr3vr")
+texture = ExtResource("4_7o66n")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
+position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_5wg87")
 
 [node name="ProjectileRefPoint" type="Node2D" parent="."]
-position = Vector2(33, 0)
+position = Vector2(29, -15.5)

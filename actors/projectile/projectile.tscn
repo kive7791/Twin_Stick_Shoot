@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpjjhmw4gdy70"]
+[gd_scene load_steps=4 format=3 uid="uid://cpjjhmw4gdy70"]
 
 [ext_resource type="Script" path="res://actors/projectile/projectile.gd" id="1_6loc4"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_t5qas"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_5ilxm"]
+[ext_resource type="Texture2D" uid="uid://c0ta44nbhmy01" path="res://Assets/Green_projectile.png" id="2_gkme0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbs76"]
 
@@ -13,17 +10,7 @@ script = ExtResource("1_6loc4")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
 scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_t5qas")
-
-[node name="Sprite2D" type="Sprite2D" parent="MainSprite"]
-position = Vector2(-0.7, 0)
-scale = Vector2(0.753484, 0.752)
-texture = SubResource("CanvasTexture_5ilxm")
-
-[node name="Sprite2D2" type="Sprite2D" parent="MainSprite"]
-position = Vector2(-1.15, 0)
-scale = Vector2(0.5, 0.5)
-texture = SubResource("CanvasTexture_5ilxm")
+texture = ExtResource("2_gkme0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qbs76")
