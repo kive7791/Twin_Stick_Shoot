@@ -29,4 +29,4 @@ to protect against enemy attacks. The game features projectiles, and an ammo pic
 | Shoot Bomb       | Right Click       |
 
 ## Project Story Board
-![Story Board](res://StoryBoard.PNG)
+![Story Board](res://StoryBoard.PNG) If this is not working please locate the picture in the above project.
