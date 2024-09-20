@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cygntj2adyqhj"
-path="res://.godot/imported/Robot_shooting_single.png-b7bc70254f8e32e555eef87c84c58574.ctex"
+uid="uid://car2e68yiqkfp"
+path="res://.godot/imported/Floor_Door.png-9f0afca30ffc3d32b0739c4590dfc24d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Robot_shooting_single.png"
-dest_files=["res://.godot/imported/Robot_shooting_single.png-b7bc70254f8e32e555eef87c84c58574.ctex"]
+source_file="res://Assets/Environment/Floor_Door.png"
+dest_files=["res://.godot/imported/Floor_Door.png-9f0afca30ffc3d32b0739c4590dfc24d.ctex"]
 
 [params]
 

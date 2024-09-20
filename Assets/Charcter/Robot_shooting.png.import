@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qvp56nbj33c8"
-path="res://.godot/imported/Robot_shooting.png-6145af78a964560de4f4de2edcf0f91f.ctex"
+path="res://.godot/imported/Robot_shooting.png-1719f169839ad81e4b040590f925a36b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Robot_shooting.png"
-dest_files=["res://.godot/imported/Robot_shooting.png-6145af78a964560de4f4de2edcf0f91f.ctex"]
+source_file="res://Assets/Charcter/Robot_shooting.png"
+dest_files=["res://.godot/imported/Robot_shooting.png-1719f169839ad81e4b040590f925a36b.ctex"]
 
 [params]
 

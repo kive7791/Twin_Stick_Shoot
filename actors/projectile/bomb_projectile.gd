@@ -13,6 +13,9 @@ var exploded: bool = false
 func _ready():
 	$TimeToLive.wait_time = explosion_delay
 	$TimeToLive.start()
+	#Checking for collison
+	connect("area_entered", Callable(self, "_on_area_entered"))
+	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func fire(forward: Vector2):
 	velocity = forward * initial_speed
@@ -47,3 +50,14 @@ func explode():
 	
 	# Remove the bomb after explosion
 	queue_free()
+
+func _on_area_entered(area):
+	# Not working as expected or area.is_in_group("floor")
+	#I dont know how to make the arc + where the floor is interact
+	if area.is_in_group("walls"): 
+		explode()
+
+func _on_body_entered(body):
+	#or body.is_in_group("floor")
+	if body.is_in_group("walls"):
+		explode()

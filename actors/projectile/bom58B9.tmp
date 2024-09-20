@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwdabe2nweamh"]
 
 [ext_resource type="Script" path="res://actors/projectile/bomb_projectile.gd" id="1_rboqq"]
-[ext_resource type="Texture2D" uid="uid://dqria3oxaf2m5" path="res://Assets/Projectile/bomb.png" id="2_d8h37"]
+[ext_resource type="Texture2D" uid="uid://dqria3oxaf2m5" path="res://Assets/bomb.png" id="2_d8h37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rab43"]
 radius = 5.0
@@ -12,9 +12,14 @@ radius = 13.0
 [sub_resource type="Gradient" id="Gradient_eyoic"]
 
 [node name="BombProjectile" type="Area2D"]
-collision_layer = 16
+collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_rboqq")
+initial_speed = null
+explosion_radius = null
+explosion_damage = null
+explosion_delay = null
+custom_gravity = null
 
 [node name="MainSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -42,6 +47,3 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 color = Color(0.501961, 0.0823529, 0.168627, 1)
 color_ramp = SubResource("Gradient_eyoic")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

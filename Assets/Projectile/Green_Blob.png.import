@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnxtvtagpyyrm"
-path="res://.godot/imported/Green_Blob.png-5ff49115f78efe9a92faf1ce1877e5b9.ctex"
+path="res://.godot/imported/Green_Blob.png-a76423a1f82e30cfe09197d5d929b5dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Green_Blob.png"
-dest_files=["res://.godot/imported/Green_Blob.png-5ff49115f78efe9a92faf1ce1877e5b9.ctex"]
+source_file="res://Assets/Projectile/Green_Blob.png"
+dest_files=["res://.godot/imported/Green_Blob.png-a76423a1f82e30cfe09197d5d929b5dd.ctex"]
 
 [params]
 

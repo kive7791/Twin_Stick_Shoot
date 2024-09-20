@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://car2e68yiqkfp"
-path="res://.godot/imported/Floor_Door.png-68f45ef67b64b0c7daa4fcae3c076b20.ctex"
+uid="uid://bpeq40juk13o2"
+path="res://.godot/imported/laser_gun.png-adf1341785a77aeaf8714447efc47d7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Floor_Door.png"
-dest_files=["res://.godot/imported/Floor_Door.png-68f45ef67b64b0c7daa4fcae3c076b20.ctex"]
+source_file="res://Assets/Charcter/laser_gun.png"
+dest_files=["res://.godot/imported/laser_gun.png-adf1341785a77aeaf8714447efc47d7a.ctex"]
 
 [params]
 
