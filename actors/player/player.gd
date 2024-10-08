@@ -6,15 +6,18 @@ extends CharacterBody2D
 @export var max_ammo: int = 10
 
 var current_ammo: int = 5
-#var is_shield_active: bool = false
+var is_shield_active: bool = true
+var health: int = 10 
 
 @onready var ammo_label = $"../UI/AmmoLable"
 @onready var game_mech_label = $"../UI/GameMech"
+@onready var pink_slime: Area2D = $"../BadSlime"
 
 
 func _ready():
 	add_to_group("player")
 	update_ammo_display()
+	pink_slime.connect("slime_hit", Callable(self, "_on_slime_hit")) 
 
 func _input(event):
 	if (event is InputEventMouseButton):
@@ -67,15 +70,20 @@ func add_ammo(amount: int):
 
 func update_ammo_display():
 	ammo_label.text = "Ammo: " + str(current_ammo) + " / " + str(max_ammo)
-#
-#func activate_shield():
-	#if not is_shield_active:
-		#is_shield_active = true
-		##var shield_instance = preload("res://actors/projectile/shield_effect.tscn").instantiate()
-		##add_child(shield_instance)  # Add shield to player
-		##shield_instance.position = position  # Position the shield on top of player
-#
-#func _on_body_entered(body):
-	#if body.is_in_group("shield"):
-		#activate_shield()
-		#body.queue_free()  # Remove the shield pickup
+
+func take_damage(dam: int) -> void:
+	#Implement this later 
+	print("Damage to player! Remaining health", health)
+	health -= dam
+	#if health <= 0:
+		#Game_Over()
+
+func _on_slime_hit(body):
+	if has_shield():
+		var shield = $Shield
+		shield.take_damage(1)
+	else:
+		take_damage(1) 
+
+func has_shield() -> bool:
+	return is_shield_active
