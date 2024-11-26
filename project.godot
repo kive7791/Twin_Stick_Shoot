@@ -21,6 +21,7 @@ player="collision with the player"
 walls="for collision with walls"
 floor="collision for floor"
 shield="Powerup for the shield"
+enemies=""
 
 [input]
 

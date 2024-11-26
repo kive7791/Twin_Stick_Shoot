@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://v6s7fglhx2i4"]
+
+[ext_resource type="Script" path="res://actors/UI/game_over.gd" id="1_tjcc2"]
+[ext_resource type="FontFile" uid="uid://dv563lhb2b53f" path="res://Assets/SFTransRobotics.ttf" id="2_umkio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il6bb"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.498806, 0, 0.0565974, 1)
+shadow_size = 50
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_tjcc2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_il6bb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Game_Over" type="Label" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Win_Lose" type="Label" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 25
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

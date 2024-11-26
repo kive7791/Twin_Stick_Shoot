@@ -4,20 +4,24 @@ extends CharacterBody2D
 @export var bomb_projectile_scene: Resource
 @export var move_speed: float = 200.0
 @export var max_ammo: int = 10
+@export var max_health: int = 10
 
-var current_ammo: int = 5
-var is_shield_active: bool = true
-var health: int = 10 
+var current_ammo: int = 10
+var current_health: int = 1
+var is_shield_active: bool = true 
 
-@onready var ammo_label = $"../UI/AmmoLable"
-@onready var game_mech_label = $"../UI/GameMech"
-@onready var pink_slime: Area2D = $"../BadSlime"
+@onready var ammo_label = $FollowCam/UI/AmmoLable
+@onready var health_label = $FollowCam/UI/HealthLable
+@onready var game_mech_label = $FollowCam/UI/GameMech
+@onready var soldier: Area2D = $"../Soldier"
 
+const GameOverScreen = preload("res://actors/UI/game_over.tscn")
 
 func _ready():
 	add_to_group("player")
 	update_ammo_display()
-	pink_slime.connect("slime_hit", Callable(self, "_on_slime_hit")) 
+	update_health_display()
+	soldier.connect("soldier_hit", Callable(self, "_on_soldier_hit")) 
 
 func _input(event):
 	if (event is InputEventMouseButton):
@@ -71,19 +75,37 @@ func add_ammo(amount: int):
 func update_ammo_display():
 	ammo_label.text = "Ammo: " + str(current_ammo) + " / " + str(max_ammo)
 
-func take_damage(dam: int) -> void:
-	#Implement this later 
-	print("Damage to player! Remaining health", health)
-	health -= dam
-	#if health <= 0:
-		#Game_Over()
+func add_health(amount: int):
+	current_health = min(max_health, current_health + amount)
+	update_health_display()
 
-func _on_slime_hit(body):
-	if has_shield():
-		var shield = $Shield
-		shield.take_damage(1)
+func take_damage(damage: int) -> void: 
+	current_health = min(max_health, current_health - damage)
+	print("Damage to player! Remaining health", current_health)
+	update_health_display()
+	
+	if current_health <= 0:
+		handle_player_win()
+
+func update_health_display():
+	health_label.text = "Health: " + str(current_health) + " / " + str(max_health)
+
+func _on_soldier_hit(body):
+	var shield = $Shield
+	if (shield.shield_active() == true):
+		shield.take_damage(2)
 	else:
-		take_damage(1) 
+		take_damage(2)
 
-func has_shield() -> bool:
-	return is_shield_active
+func handle_player_win():
+	var game_over = GameOverScreen.instantiate()
+	add_child(game_over)
+	game_over.set_title(true)
+	get_tree().paused = true ##Stops all game processing - freezes background
+
+func handle_player_lost():
+	# If the character dies
+	var game_over = GameOverScreen.instantiate()
+	add_child(game_over)
+	game_over.set_title(false)
+	get_tree().paused = true

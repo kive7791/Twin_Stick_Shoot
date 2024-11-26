@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbs76"]
 radius = 6.0
 
-[node name="Base_Attack" type="Area2D"]
+[node name="Base_Attack" type="Area2D" groups=["projectile"]]
 z_index = 1
 collision_layer = 8
 collision_mask = 3
@@ -23,4 +23,6 @@ shape = SubResource("CircleShape2D_qbs76")
 [node name="TimeToLive" type="Timer" parent="."]
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]

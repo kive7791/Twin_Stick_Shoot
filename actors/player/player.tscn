@@ -20,29 +20,31 @@ projectile_scene = ExtResource("2_d25ch")
 bomb_projectile_scene = ExtResource("3_bhf8a")
 
 [node name="Robot" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_t5uop")
+offset = Vector2(0, -325)
 
 [node name="hand" type="Sprite2D" parent="Robot"]
 modulate = Color(0.4, 0.392157, 0.4, 1)
-position = Vector2(217.856, -135)
+position = Vector2(217.856, -465)
 scale = Vector2(40, 37)
 texture = SubResource("CanvasTexture_4khxq")
 
 [node name="Finger_top" type="Sprite2D" parent="Robot"]
 modulate = Color(0.509804, 0.509804, 0.509804, 1)
-position = Vector2(237.5, -140)
+position = Vector2(237.5, -470)
 scale = Vector2(10, 10)
 texture = SubResource("CanvasTexture_4khxq")
 
 [node name="Finger_bottom" type="Sprite2D" parent="Robot"]
 modulate = Color(0.509804, 0.509804, 0.509804, 1)
-position = Vector2(237.5, -130)
+position = Vector2(237.5, -470)
 scale = Vector2(10, 10)
 texture = SubResource("CanvasTexture_4khxq")
 
 [node name="Gun" type="Sprite2D" parent="Robot"]
-position = Vector2(250, -155)
+position = Vector2(250, -475)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_7o66n")
 

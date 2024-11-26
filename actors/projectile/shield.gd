@@ -7,6 +7,7 @@ signal sp_changed(new_value)
 signal receive_damage(amount: int)
 
 var _sp: int = max_sp  # Private variable for shield points (SP)
+var is_shield_active = true
 
 var recovering: bool = false
 @export var recovering_speed: float = 1.5
@@ -41,13 +42,19 @@ func take_damage(dam: int) -> void:
 	sp -= dam  # Use the property now
 	if sp == 0:
 		animationPlayer.play("deactivate")
+		is_shield_active = false
 	else:
 		animationPlayer.play("damage")
+		is_shield_active = true
 	recoverTimer.start()
+
+func shield_active():
+	return is_shield_active
 
 func _on_recovery_timer_timeout() -> void:
 	if sp == 0:
 		animationPlayer.play("activate")
+		is_shield_active = true
 
 	recovering = true
 	while recovering:

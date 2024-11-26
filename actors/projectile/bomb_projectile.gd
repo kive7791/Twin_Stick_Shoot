@@ -13,9 +13,6 @@ var exploded: bool = false
 func _ready():
 	$TimeToLive.wait_time = explosion_delay
 	$TimeToLive.start()
-	#Checking for collison
-	connect("area_entered", Callable(self, "_on_area_entered"))
-	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func fire(forward: Vector2):
 	velocity = forward * initial_speed
@@ -30,34 +27,54 @@ func _physics_process(delta):
 	look_at(position + velocity)
 
 func _on_Timer_timeout():
-	explode()
+	if $ExplosionArea.has_overlapping_areas():
+		explode_area($ExplosionArea.get_overlapping_areas())
+	elif $ExplosionArea.has_overlapping_bodies():
+		explode_body($ExplosionArea.has_overlapping_bodies())
 
-func explode():
+func _on_area_entered(area):
+	print(area.name + " Test1 Bomb")
+	print("Object Name: " + area.name + ", Groups: " + str(area.get_groups()))
+	# Handle collision
+	if area.is_in_group("enemies"):  # If it collides with an enemy
+		print("Area Bomb hit! " + area.name)
+		explode_area(area)
+
+func _on_body_entered(body):
+	print(body.name + " Test2 Bomb")
+	print("Object Name: " + body.name + ", Groups: " + str(body.get_groups()))
+	if body.is_in_group("walls"):
+		print("Body Bomb hit! " + body.name)
+		explode_body(body)
+
+func explode_area(area):
 	# Stop emitting particles on explosion
 	if trail_particles:
 		trail_particles.emitting = false
-	if exploded:
-		return
-	exploded = true
-	
-	# Where I would add visual/sound effects for explosion
-	$ExplosionArea.set_monitoring(true)
-	
+
 	# This is where the damage is delt 
 	# or effects to everything in the explosion area
-	for body in $ExplosionArea.get_overlapping_bodies():
-		print("Damaged:", body.name)
+	# Damage everything within the explosion radius
+	print("Damaged:", area.name)
+	if area.is_in_group("enemies"):
+		print("Damaged:", area.name)
+		area.take_damage(explosion_damage) # Call the enemy's damage method
 	
 	# Remove the bomb after explosion
 	queue_free()
 
-func _on_area_entered(area):
-	# Not working as expected or area.is_in_group("floor")
-	#I dont know how to make the arc + where the floor is interact
-	if area.is_in_group("walls"): 
-		explode()
-
-func _on_body_entered(body):
-	#or body.is_in_group("floor")
-	if body.is_in_group("walls"):
-		explode()
+func explode_body(body):
+	# Stop emitting particles on explosion
+	if trail_particles:
+		trail_particles.emitting = false
+	
+	# This is where the damage is delt 
+	# or effects to everything in the explosion area
+	# Damage everything within the explosion radius
+	print("Damaged:", body.name)
+	if body.is_in_group("enemies"):
+		print("Damaged:", body.name)
+		body.take_damage(explosion_damage) # Call the enemy's damage method
+	
+	# Remove the bomb after explosion
+	queue_free()
