@@ -1,18 +1,31 @@
-extends CanvasLayer
+extends Control
 
+# Node references
 @onready var title = %Win_Lose
 
-func set_title(win: bool):
-	if win:
-		title.text = "YOU WIN!"
-		title.modulate = Color.DARK_GREEN
-	else:
-		title.text = "YOU LOSE!"
+# Define the signal
+signal restart_game
+signal quit_game
+
+func _ready() -> void:
+	print("game_over _ready")
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+func set_message(message: String, score: int) -> void:
+	title.text = message
+	$ScoreLabel.text = "Score: %d" % score
+	title.modulate = Color.DARK_GREEN
+	if not message.contains("WIN"):
 		title.modulate = Color.DARK_RED
 
 func _on_restart_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://main.tscn")
+	print("game_over restart_pressed...")
+	emit_signal("restart_game")
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	print("game_over _on_quit_pressed")
+	emit_signal("quit_game")

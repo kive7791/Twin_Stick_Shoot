@@ -1,0 +1,20 @@
+The attached files pertain to a Godot 4.3 game I am developing called Twin_Stick ("main.gd"). The game consists of seven classes: Player ("player.gd"), Shield ("shield.gd"), Soldier ("soldier.gd"), Gun ("gun.gd"), Bomb ("bomb.gd"), Ammo ("ammo.gd"), and Health ("health.tscn"). The Gun and Bomb are categorized as Projectiles, while Ammo and Health are classified as Consumables. 
+
+The main game script includes walls, a floor, doors, a single Player, and multiple Soldiers. The walls are represented as a TileMapLayer; no objects can damage or penetrate the walls, floor, or doors. The Player is a first-person character that can be controlled to move left, right, up, and down on the map. The Player can collect Consumables like Ammo and Health to restore their ammo or health levels. When interacting or colliding, the Player and Soldiers can inflict damage on each other. If all Soldiers are killed then the Player wins. If the Player is killed, then the Player loses.
+
+This game will have two levels. The only difference with the new level is that the Walls and Items are now in a different layout. Also, game_over class should show a score. The score is based on collecting the Consumables and killing the Soldiers. If the soldiers take a Consumable then the player loses points. If the player kills a Soldier or collects a consumable then the player increases his score.
+
+At the start of the game, the Shield is activated, using a TextureProgressBar referred to as HealthBar to display its current health. The HealthBar is always visible. If the Player's health reaches zero or below, the game will destroy all objects, perform cleanup, and show a Game Over screen ("game_over.gd"). This screen will allow users to restart the game or quit. When a Soldier is defeated, it will be destroyed and disappear. The Shield will display a halo sprite with the animation ShieldAnim while it is active, damaged, or disabled. The Shield remains active until its health is depleted, but its health cannot fall below zero. Additionally, the Shield has a recovery timer to restore health over time.
+
+The game features multiple projectiles that can only damage the Soldiers. There are two different types of Soldiers in the game: one chases the Player when the Player is within range, while the other destroys the Consumables. The Bomb includes a TrailParticle effect to indicate its arc projection. It also has an additional CollisionShape2D to extend its range. When a Projectile is used, it will have its own trajectory independent of any characters or objects in the game. The projectile will be thrown in the direction the Player is facing.
+
+The collision layers and masks are set as follows:
+- Walls, floor, and doors are on Layer 1
+- Player and Shield are on Layer 2
+- Soldiers are on Layer 3
+- Projectiles are on Layer 4
+- Consumables are on Layer 5
+
+Please note that in Godot 4.3, `move_and_slide()` does not accept parameters. The error occurs because, starting with Godot 4.x, the connect() method requires a Callable as its second argument, rather than the previous "method_name" string format used in earlier Godot versions.
+
+Optimize and provide refactored versions of all scripts and show complete code. Create an introduction screen and game over screen for the game. The game over screen will allow the user to restart the game or quit the game.

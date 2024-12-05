@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4crvm8cercjp"]
+
+[ext_resource type="Script" path="res://actors/UI/intro_screen.gd" id="1_nnb1l"]
+[ext_resource type="FontFile" uid="uid://dv563lhb2b53f" path="res://Assets/SFTransRobotics.ttf" id="2_er5eo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il6bb"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.34902, 0.827451, 0.0509804, 1)
+shadow_size = 50
+
+[node name="Introduction" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_right = 10.0
+script = ExtResource("1_nnb1l")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 1052.0
+offset_right = 208.0
+offset_bottom = 1110.0
+theme_override_fonts/font = ExtResource("2_er5eo")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+metadata/_edit_group_ = true
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 1062.0
+offset_right = 1257.0
+offset_bottom = 1120.0
+theme_override_fonts/font = ExtResource("2_er5eo")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+metadata/_edit_group_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.801)
+theme_override_styles/panel = SubResource("StyleBoxFlat_il6bb")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Rows" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_er5eo")
+theme_override_font_sizes/font_size = 100
+text = "Rogue Frontline"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]

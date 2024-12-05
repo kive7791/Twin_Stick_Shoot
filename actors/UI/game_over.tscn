@@ -12,66 +12,85 @@ border_width_bottom = 10
 border_color = Color(0.498806, 0, 0.0565974, 1)
 shadow_size = 50
 
-[node name="GameOver" type="CanvasLayer"]
-process_mode = 2
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_right = 10.0
 script = ExtResource("1_tjcc2")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.8173
+offset_top = 1057.19
+offset_right = 221.817
+offset_bottom = 1115.19
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1125.82
+offset_top = 1069.19
+offset_right = 1238.82
+offset_bottom = 1127.19
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 297.817
+offset_top = 1019.19
+offset_right = 340.817
+offset_bottom = 1042.19
+scale = Vector2(5, 5)
+
+[node name="Win_Lose" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 309.0
+offset_top = 137.0
+offset_right = 950.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("2_umkio")
+theme_override_font_sizes/font_size = 25
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOverUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.811617)
 theme_override_styles/panel = SubResource("StyleBoxFlat_il6bb")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameOverUI/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 
-[node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="Rows" type="VBoxContainer" parent="GameOverUI/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOverUI/PanelContainer/MarginContainer/Rows"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/PanelContainer/MarginContainer/Rows/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 7
 
-[node name="Game_Over" type="Label" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+[node name="Game_Over" type="Label" parent="GameOverUI/PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_umkio")
 theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="Win_Lose" type="Label" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_umkio")
-theme_override_font_sizes/font_size = 25
-text = "YOU WIN!"
-horizontal_alignment = 1
-
-[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 40
-
-[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_umkio")
-theme_override_font_sizes/font_size = 50
-text = "Restart"
-
-[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_umkio")
-theme_override_font_sizes/font_size = 50
-text = "Quit"
-
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

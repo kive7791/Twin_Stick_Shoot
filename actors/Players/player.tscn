@@ -1,0 +1,265 @@
+[gd_scene load_steps=30 format=3 uid="uid://cxhmbcu2y6onb"]
+
+[ext_resource type="Script" path="res://actors/Players/player.gd" id="1_hxo5q"]
+[ext_resource type="PackedScene" uid="uid://cpjjhmw4gdy70" path="res://actors/Projectiles/Bullet/bullet.tscn" id="2_d25ch"]
+[ext_resource type="PackedScene" uid="uid://dwdabe2nweamh" path="res://actors/Projectiles/Bomb/bomb.tscn" id="3_bhf8a"]
+[ext_resource type="Texture2D" path="res://Assets/Charcter/laser_gun.png" id="4_7o66n"]
+[ext_resource type="AudioStream" uid="uid://cts5as3s7jw5b" path="res://Assets/Projectile/Sounds/Projectile.wav" id="4_ewmi2"]
+[ext_resource type="Texture2D" uid="uid://cygntj2adyqhj" path="res://Assets/Player/Robot_shooting_single.png" id="5_nvqme"]
+[ext_resource type="Texture2D" uid="uid://dvvnxonu1tqrn" path="res://Assets/Player/Robot_Idle.png" id="7_fw5ii"]
+[ext_resource type="Texture2D" uid="uid://c0j3hi2ivpvbp" path="res://Assets/Player/Robot_run_with_gun.png" id="7_ptv6c"]
+[ext_resource type="Texture2D" uid="uid://qvp56nbj33c8" path="res://Assets/Player/Robot_shooting.png" id="8_j0ssy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4khxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wg87"]
+size = Vector2(50, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00gq7"]
+size = Vector2(49, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1jfw"]
+atlas = ExtResource("7_fw5ii")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n06ji"]
+atlas = ExtResource("7_fw5ii")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqbqy"]
+atlas = ExtResource("8_j0ssy")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwjjl"]
+atlas = ExtResource("8_j0ssy")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r8r0"]
+atlas = ExtResource("8_j0ssy")
+region = Rect2(2000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir855"]
+atlas = ExtResource("8_j0ssy")
+region = Rect2(3000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ccl"]
+atlas = ExtResource("8_j0ssy")
+region = Rect2(4000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c4ds"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkfr2"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k728"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(2000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pksgn"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(3000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yvtx"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(4000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqprk"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(5000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88xv8"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(6000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu5o6"]
+atlas = ExtResource("7_ptv6c")
+region = Rect2(7000, 0, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cq6lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1jfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n06ji")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqbqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwjjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r8r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir855")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16ccl")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c4ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k728")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pksgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yvtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqprk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88xv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu5o6")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i42am"]
+size = Vector2(50, 66)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 101
+motion_mode = 1
+script = ExtResource("1_hxo5q")
+bullet_scene = ExtResource("2_d25ch")
+bomb_scene = ExtResource("3_bhf8a")
+gunshot1_sfx = ExtResource("4_ewmi2")
+motion_speed = 200.0
+collision_damage = 5
+max_health = 100
+max_ammo = 10
+
+[node name="Robot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_nvqme")
+offset = Vector2(0, -320)
+
+[node name="hand" type="Sprite2D" parent="Robot"]
+visible = false
+modulate = Color(0.4, 0.392157, 0.4, 1)
+position = Vector2(217.856, -465)
+scale = Vector2(40, 37)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Finger_top" type="Sprite2D" parent="Robot"]
+visible = false
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(237.5, -470)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Finger_bottom" type="Sprite2D" parent="Robot"]
+visible = false
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(237.5, -470)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Gun" type="Sprite2D" parent="Robot"]
+position = Vector2(250, -475)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_7o66n")
+
+[node name="fix_arm" type="Node" parent="Robot"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.509804, 0.509804, 0.509804, 1)
+position = Vector2(16.8, -13.6)
+scale = Vector2(7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.4, 0.392157, 0.4, 1)
+position = Vector2(16.6606, -12.6563)
+scale = Vector2(7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(22.754, -13)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(22.754, -14)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(261.817, -151.319)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Robot/fix_arm"]
+visible = false
+modulate = Color(0.615686, 0.611765, 0.611765, 1)
+position = Vector2(17.15, -14.556)
+scale = Vector2(7.7, 1)
+texture = SubResource("CanvasTexture_4khxq")
+
+[node name="MainCollider" type="CollisionShape2D" parent="."]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_5wg87")
+
+[node name="ProjectileRefPoint" type="Node2D" parent="."]
+position = Vector2(29, -15.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 1.5)
+shape = SubResource("RectangleShape2D_00gq7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -16)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_cq6lj")
+animation = &"Shoot"
+frame_progress = 0.441081
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(23.6899, -15.8692)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("4_7o66n")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_i42am")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="on_collision"]

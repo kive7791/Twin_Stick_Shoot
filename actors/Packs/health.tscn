@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh18a60chh2jo"]
+
+[ext_resource type="Script" path="res://actors/Packs/health.gd" id="1_lc5u0"]
+[ext_resource type="Texture2D" uid="uid://c42rlwsgxd4vp" path="res://Assets/Friends/pink_slime.png" id="2_1v167"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thjbc"]
+size = Vector2(26, 17)
+
+[node name="Health" type="Area2D" groups=["dynamic_objects"]]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_lc5u0")
+heal_amount = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 8)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_1v167")
+offset = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_thjbc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
