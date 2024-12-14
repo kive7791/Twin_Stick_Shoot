@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://actors/Players/player.gd" id="1_hxo5q"]
 [ext_resource type="PackedScene" uid="uid://cpjjhmw4gdy70" path="res://actors/Projectiles/Bullet/bullet.tscn" id="2_d25ch"]
 [ext_resource type="PackedScene" uid="uid://dwdabe2nweamh" path="res://actors/Projectiles/Bomb/bomb.tscn" id="3_bhf8a"]
-[ext_resource type="Texture2D" path="res://Assets/Charcter/laser_gun.png" id="4_7o66n"]
+[ext_resource type="Texture2D" path="res://Assets/Player/laser_gun.png" id="4_7o66n"]
 [ext_resource type="AudioStream" uid="uid://cts5as3s7jw5b" path="res://Assets/Projectile/Sounds/Projectile.wav" id="4_ewmi2"]
 [ext_resource type="Texture2D" uid="uid://cygntj2adyqhj" path="res://Assets/Player/Robot_shooting_single.png" id="5_nvqme"]
 [ext_resource type="Texture2D" uid="uid://dvvnxonu1tqrn" path="res://Assets/Player/Robot_Idle.png" id="7_fw5ii"]
