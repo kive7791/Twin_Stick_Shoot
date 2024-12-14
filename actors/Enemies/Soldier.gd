@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Soldier
+class_name soldier
 
 # Health properties
 @export var motion_speed: float # Speed at which the soldier moves
